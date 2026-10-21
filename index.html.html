@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3d1029">
+  <meta name="description" content="A little love surprise from Saif to Samaira ❤️">
+  <title>For Samaira, With Love ❤️</title>
+  <style>
+    :root {
+      --site-primary: #a92f68;
+      --site-on-primary: #ffffff;
+      --site-secondary: #f7d6e5;
+      --site-on-secondary: #4c1732;
+      --site-background: #3d1029;
+      --site-on-background: #fff6fa;
+      --site-font-body: ui-rounded, "Segoe UI", system-ui, sans-serif;
+      --site-font-heading: Georgia, "Times New Roman", serif;
+      --site-heading-scale: 1;
+      --site-spacing-scale: 1;
+      --site-radius-scale: 1;
+      --site-decoration-opacity: 1;
+      color-scheme: light dark;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--site-font-body);
+      background: #3d1029;
+      color: #fff6fa;
+    }
+    .app {
+      min-height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 28px 16px 34px;
+      background: radial-gradient(ellipse at top, #7b214e 0%, #4b1634 42%, #250b20 100%);
+      isolation: isolate;
+    }
+    .glow {
+      position: absolute;
+      z-index: -1;
+      width: min(85vw, 520px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #e75a96;
+      filter: blur(95px);
+      opacity: calc(.16 * var(--site-decoration-opacity));
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .sparkles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; opacity: var(--site-decoration-opacity); }
+    .sparkle { position: absolute; color: #ffd0e2; opacity: .55; animation: drift 8s ease-in-out infinite; }
+    .sparkle:nth-child(1) { left: 8%; top: 16%; font-size: 22px; }
+    .sparkle:nth-child(2) { left: 86%; top: 22%; font-size: 17px; animation-delay: -2s; }
+    .sparkle:nth-child(3) { left: 14%; top: 76%; font-size: 18px; animation-delay: -4s; }
+    .sparkle:nth-child(4) { left: 82%; top: 78%; font-size: 25px; animation-delay: -1s; }
+    .sparkle:nth-child(5) { left: 50%; top: 8%; font-size: 14px; animation-delay: -3s; }
+    .content { width: min(100%, 560px); text-align: center; position: relative; }
+    .eyebrow { color: #f6b7d0; text-transform: uppercase; letter-spacing: .22em; font-size: 11px; font-weight: 700; margin-bottom: 15px; }
+    h1 { font-family: var(--site-font-heading); font-size: clamp(2.5rem, 9vw, 4.5rem); font-weight: 500; line-height: 1.02; margin: 0 0 12px; letter-spacing: -.04em; }
+    h1 span { color: #ffb4d0; font-style: italic; }
+    .intro { color: #f5dce7; font-size: 15px; line-height: 1.65; max-width: 360px; margin: 0 auto 28px; }
+    .envelope-area { display: grid; place-items: center; margin: 6px auto 24px; min-height: 205px; }
+    .envelope-button { background: none; border: 0; color: inherit; cursor: pointer; padding: 10px; border-radius: 22px; -webkit-tap-highlight-color: transparent; }
+    .envelope-button:focus-visible, .action:focus-visible, .music:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
+    .envelope-button:hover .envelope { transform: translateY(-5px) rotate(-1deg); }
+    .envelope { position: relative; width: min(68vw, 260px); height: 158px; background: linear-gradient(145deg, #ffb7d1, #e86a9b); border-radius: 10px; box-shadow: 0 18px 50px #14061280; transition: transform .3s ease; }
+    .envelope::before { content: ""; position: absolute; inset: 0; background: linear-gradient(35deg, transparent 49%, #f68ab3 50%) left bottom / 50% 100% no-repeat, linear-gradient(-35deg, transparent 49%, #f68ab3 50%) right bottom / 50% 100% no-repeat; border-radius: 10px; }
+    .flap { position: absolute; left: 0; right: 0; top: 0; height: 90px; background: #ffc9dd; clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top; transition: transform .65s ease; z-index: 3; filter: drop-shadow(0 4px 3px #7b214e33); }
+    .seal { position: absolute; z-index: 4; left: 50%; top: 53%; transform: translate(-50%,-50%); width: 45px; height: 45px; display: grid; place-items: center; background: #b52e69; color: white; border-radius: 50%; font-size: 23px; box-shadow: 0 4px 12px #6b1744aa; transition: opacity .3s ease; }
+    .letter-peek { position: absolute; z-index: 2; left: 12%; right: 12%; top: 12px; height: 115px; background: #fff9fc; border-radius: 7px; color: #9b315f; padding-top: 19px; font-family: var(--site-font-heading); font-size: 19px; transition: transform .65s ease; }
+    .tap-hint { color: #ffd7e6; font-size: 13px; margin-top: 16px; }
+    .letter-card { display: none; text-align: left; padding: 27px 23px 24px; margin: 4px auto 20px; border: 1px solid #f5b5d344; border-radius: 20px; background: linear-gradient(150deg, #fff8fb, #ffe8f1); color: #53213b; box-shadow: 0 18px 55px #17061370; animation: reveal .7s cubic-bezier(.2,.8,.2,1) both; }
+    .letter-card.visible { display: block; }
+    .letter-top { text-align: center; color: #b52e69; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
+    .letter-card h2 { text-align: center; font-family: var(--site-font-heading); font-size: clamp(1.8rem, 7vw, 2.5rem); font-weight: 500; margin: 0 0 17px; }
+    .letter-card p { font-size: 15px; line-height: 1.8; margin: 0 0 13px; }
+    .signature { text-align: right; color: #a92f68; font-family: var(--site-font-heading); font-style: italic; font-size: 23px; margin-top: 19px; }
+    .actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+    .action, .music { cursor: pointer; border: 1px solid #f8bfd6; border-radius: 999px; padding: 12px 17px; font: inherit; font-size: 13px; font-weight: 700; transition: transform .2s, background .2s; }
+    .action:hover, .music:hover { transform: translateY(-2px); }
+    .action.primary { background: #b52e69; color: white; border-color: #b52e69; }
+    .action.secondary { background: #fff2f7; color: #8c2855; }
+    .music { background: #632044; color: #fff3f8; border-color: #a95b80; margin-top: 2px; }
+    .footer { color: #d9a9c0; font-size: 11px; margin-top: 24px; letter-spacing: .06em; }
+    .floating-heart { position: fixed; bottom: -35px; z-index: 10; pointer-events: none; animation: float-up 4.2s ease-in forwards; opacity: .9; }
+    .hidden { display: none !important; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes drift { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-13px) rotate(9deg); } }
+    @keyframes float-up { 0% { transform: translateY(0) scale(.7) rotate(0); opacity: 0; } 12% { opacity: .9; } 100% { transform: translateY(-115vh) scale(1.3) rotate(24deg); opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+    @media (max-width: 380px) { .app { padding-inline: 12px; } .letter-card { padding: 23px 18px; } .intro { font-size: 14px; } }
+  </style>
+</head>
+<body>
+  <main class="app" id="app">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="sparkles" aria-hidden="true"><span class="sparkle">✦</span><span class="sparkle">♡</span><span class="sparkle">✧</span><span class="sparkle">♡</span><span class="sparkle">✦</span></div>
+    <section class="content" aria-live="polite">
+      <div class="eyebrow">a little something from my heart</div>
+      <h1>For you,<br><span>Samaira</span> ♡</h1>
+      <p class="intro" id="intro">Some feelings are too special for an ordinary message. So, I made you a little place filled with love.</p>
+      <div class="envelope-area" id="envelopeArea">
+        <button class="envelope-button" id="openLetter" aria-label="Open your love letter">
+          <div class="envelope"><div class="letter-peek">For my favourite person</div><div class="flap" id="flap"></div><div class="seal" id="seal">♥</div></div>
+          <div class="tap-hint">Tap the envelope to open your surprise ✨</div>
+        </button>
+      </div>
+      <article class="letter-card" id="letterCard">
+        <div class="letter-top">just for you · always</div>
+        <h2>Good morning, mera shona baccha ☀️💗</h2>
+        <p>Good morning, mera shona baccha. Ham jaante hain ham dono ka ye waqt thoda sa dikkat wala chal raha hai. Jhagda-ladai hote rehte hain, lekin mera jaan, ham sab kuch se badh ke aapko pyaar karte hain. Ham hamesha aapke saath rehne ka sapna dekhte hain. Kabhi hamko chhod ke mat jaana, mera jaan, chahe kuch bhi ho, kyunki ham dono ka pyaar hi ham dono ko saath rakh sakta hai. 💗</p>
+        <p>Samuu, mera jaan, aaj nahi toh kal mere paas itna paisa hoga ki ham aapko achhe se rakh sakein aur aapki khwahishein poori kar sakein. Lekin agar aap chali gayi, toh mere in sab khwabon ka matlab hi khatam ho jayega. Main apne sapne aapke saath poore karna chahta hoon, meri jaan.</p>
+        <p>Zindagi zyada se zyada 40–50 saal ki ho sakti hai, aur ye bhi nahi pata ki kab tak hai. Jab tak zindagi hai, mere saath reh lo, mere saath jee lo, mere saath pyaar kar lo. Kyunki aap jaanti hain, is duniya mein ab mujhe bas aapse hi aas hai. Mera jaan, kabhi mujhe kisi ke saamne girne mat dena aur kabhi akela mat chhodna.</p>
+        <p>Baaki, aapki zindagi ko achha banana mere haath mein hai. Ham hamesha aapke saath hain, aapke paas hain, sirf aur sirf aapke hain.</p>
+        <p><strong>I love you so much, mera baccha, meri pyari biwi.</strong> ❤️</p>
+        <div class="signature">Forever yours,<br>Saif ♡</div>
+        <div class="actions"><button class="action primary" id="loveButton">Send a little love 💖</button><button class="action secondary" id="againButton">Read it again ↻</button></div>
+      </article>
+      <button class="music" id="musicButton" aria-pressed="false">♫ Tap for romantic music</button>
+      <div class="footer">MADE WITH LOVE · SAIF → SAMAIRA</div>
+    </section>
+  </main>
+  <script>
+    const openLetter = document.getElementById('openLetter');
+    const flap = document.getElementById('flap');
+    const seal = document.getElementById('seal');
+    const letterCard = document.getElementById('letterCard');
+    const envelopeArea = document.getElementById('envelopeArea');
+    const intro = document.getElementById('intro');
+    let opened = false;
+    let audioContext = null;
+    let musicOn = false;
+    let melodyTimer = null;
+    let noteIndex = 0;
+    const notes = [261.63, 329.63, 392.00, 329.63, 293.66, 349.23, 440.00, 349.23, 261.63, 329.63, 392.00, 523.25];
+
+    function burstHearts(count = 18) {
+      const symbols = ['♥', '♡', '💗', '✦'];
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement('span');
+        heart.className = 'floating-heart';
+        heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        heart.style.left = (5 + Math.random() * 90) + 'vw';
+        heart.style.fontSize = (14 + Math.random() * 20) + 'px';
+        heart.style.color = ['#ffb6d0', '#ffdce9', '#f78db7', '#ffffff'][Math.floor(Math.random() * 4)];
+        heart.style.animationDuration = (3 + Math.random() * 2.5) + 's';
+        document.body.appendChild(heart);
+        heart.addEventListener('animationend', () => heart.remove(), { once: true });
+      }
+    }
+    function openIt() {
+      if (opened) return;
+      opened = true;
+      flap.style.transform = 'rotateX(180deg)';
+      seal.style.opacity = '0';
+      document.querySelector('.letter-peek').style.transform = 'translateY(-75px)';
+      setTimeout(() => {
+        envelopeArea.classList.add('hidden');
+        intro.classList.add('hidden');
+        letterCard.classList.add('visible');
+        burstHearts(25);
+        letterCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 450);
+    }
+    openLetter.addEventListener('click', openIt);
+    document.getElementById('loveButton').addEventListener('click', () => {
+      burstHearts(35);
+      const btn = document.getElementById('loveButton');
+      btn.textContent = 'A thousand kisses for you 😘';
+      setTimeout(() => { btn.textContent = 'Send a little love 💖'; }, 2200);
+    });
+    document.getElementById('againButton').addEventListener('click', () => {
+      letterCard.classList.remove('visible');
+      envelopeArea.classList.remove('hidden');
+      intro.classList.remove('hidden');
+      opened = false;
+      flap.style.transform = '';
+      seal.style.opacity = '1';
+      document.querySelector('.letter-peek').style.transform = '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    function playNote() {
+      if (!audioContext || !musicOn) return;
+      const now = audioContext.currentTime;
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(notes[noteIndex % notes.length], now);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.055, now + 0.06);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.62);
+      osc.connect(gain);
+      gain.connect(audioContext.destination);
+      osc.start(now);
+      osc.stop(now + 0.66);
+      noteIndex++;
+    }
+    document.getElementById('musicButton').addEventListener('click', async () => {
+      const button = document.getElementById('musicButton');
+      if (!musicOn) {
+        try {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtx) throw new Error('Audio unavailable');
+          audioContext = audioContext || new AudioCtx();
+          if (audioContext.state === 'suspended') await audioContext.resume();
+          musicOn = true;
+          playNote();
+          melodyTimer = setInterval(playNote, 430);
+          button.textContent = '♫ Romantic music is playing · Tap to pause';
+          button.setAttribute('aria-pressed', 'true');
+        } catch (error) {
+          button.textContent = 'Music is not supported in this browser';
+        }
+      } else {
+        musicOn = false;
+        clearInterval(melodyTimer);
+        button.textContent = '♫ Tap for romantic music';
+        button.setAttribute('aria-pressed', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
